@@ -35,6 +35,7 @@ dependencies:
 
   #Animation
   page_transition: ^2.1.0
+  firebase_core: ^2.25.5
 
 dev_dependencies:
   flutter_test:

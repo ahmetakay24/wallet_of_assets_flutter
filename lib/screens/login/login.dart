@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:varlik_yonetimi/core/core_methods.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
-import 'package:varlik_yonetimi/screens/Login/widgets/Texts%20And%20Images/login_texts_and_images.dart';
 import 'package:varlik_yonetimi/screens/login/widgets/Buttons/login_buttons.dart';
 import 'package:varlik_yonetimi/screens/login/widgets/text_form_fields/login_text_form_fields.dart';
+import 'package:varlik_yonetimi/screens/login/widgets/texts_and_images/login_texts_and_images.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

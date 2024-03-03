@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "868921740099",
+    "project_id": "varlik-yonetimi-a9cff",
+    "storage_bucket": "varlik-yonetimi-a9cff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868921740099:android:08f93620fadcee08e5bdf6",
+        "android_client_info": {
+          "package_name": "com.example.varlik_yonetimi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxyLgmJ3ZKv-JQzaLsDzrflUXlM7wxwMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
