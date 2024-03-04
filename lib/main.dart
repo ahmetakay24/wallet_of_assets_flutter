@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:varlik_yonetimi/screens/signup/sign_up.dart';
 
-
-void main() {
+void main() async {
   runApp(const VarlikYonetimi());
 }
 
