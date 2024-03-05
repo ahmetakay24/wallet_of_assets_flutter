@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:varlik_yonetimi/screens/forgot_password/forgot_password.dart';
-import 'package:varlik_yonetimi/screens/login/login.dart';
 import 'package:varlik_yonetimi/theme/theme_data.dart';
 
 void main() async {
@@ -33,5 +32,3 @@ class VarlikYonetimi extends StatelessWidget {
     );
   }
 }
-
-
