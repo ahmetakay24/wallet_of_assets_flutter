@@ -1,8 +1,9 @@
 import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:varlik_yonetimi/screens/signup/sign_up.dart';
+import 'package:varlik_yonetimi/screens/forgot_password/forgot_password.dart';
+import 'package:varlik_yonetimi/screens/login/login.dart';
+import 'package:varlik_yonetimi/theme/theme_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,8 +28,10 @@ class VarlikYonetimi extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: "CormorantGaramond"),
-      home: const SafeArea(child: SignUpScreen()),
+      theme: darkTheme,
+      home: const SafeArea(child: ForgotPasswordScreen()),
     );
   }
 }
+
+

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
+import 'package:varlik_yonetimi/screens/login/login.dart';
 import 'package:varlik_yonetimi/screens/login/widgets/buttons/login_buttons.dart';
 import 'package:varlik_yonetimi/screens/signup/services/signup_auth_service.dart';
 import 'package:varlik_yonetimi/screens/signup/sign_up.dart';
@@ -14,20 +16,10 @@ class SignUpCreateAccountButton extends StatefulWidget {
 }
 
 class _SignUpCreateAccountButtonState extends State<SignUpCreateAccountButton> {
-  late TextEditingController _nameController;
-  late TextEditingController _surnameController;
-  late TextEditingController _emailController;
-  late TextEditingController _passwordController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _nameController = SignUpScreen.of(context)!.signupNameC;
-    _surnameController = SignUpScreen.of(context)!.signupSurnameC;
-    _emailController = SignUpScreen.of(context)!.signupEmailC;
-    _passwordController = SignUpScreen.of(context)!.signupPasswordC;
-  }
+  late final TextEditingController _nameController = SignUpScreen.of(context)!.signupNameC;
+  late final TextEditingController _surnameController = SignUpScreen.of(context)!.signupSurnameC;
+  late final TextEditingController _emailController = SignUpScreen.of(context)!.signupEmailC;
+  late final TextEditingController _passwordController = SignUpScreen.of(context)!.signupPasswordC;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +28,7 @@ class _SignUpCreateAccountButtonState extends State<SignUpCreateAccountButton> {
       children: [
         Expanded(
             child: ElevatedButton(
-                onPressed: () => SignUpAuthService().registerUser(
+                onPressed: () => SignUpAuthService().signUp(context,
                     name: _nameController.text,
                     surname: _surnameController.text,
                     email: _emailController.text,
@@ -77,7 +69,8 @@ class SignUpLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: () {},
+        onPressed: () =>
+            Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: const LoginScreen())),
         child: const Text(
           "Login",
           style: TextStyle(color: Colors.white, fontSize: 25),

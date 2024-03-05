@@ -12,7 +12,20 @@
           "package_name": "com.example.varlik_yonetimi"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "868921740099-8oti40g4vvgspqj87kl77engrfkitlpd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.varlik_yonetimi",
+            "certificate_hash": "10da972e9dfb0608e41281b43fcee29a607ecb54"
+          }
+        },
+        {
+          "client_id": "868921740099-8umd4v658ivalmbj1gvbo34pvkuvredv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDxyLgmJ3ZKv-JQzaLsDzrflUXlM7wxwMo"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868921740099-8umd4v658ivalmbj1gvbo34pvkuvredv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "868921740099-kr0jv3c7cq50tq115j0tr0sadhi382d1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.varlikYonetimi.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

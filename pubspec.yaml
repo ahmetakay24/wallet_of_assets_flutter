@@ -47,6 +47,12 @@ dependencies:
   #App icon
   flutter_launcher_icons: "^0.13.1"
 
+  #Authentication 
+  google_sign_in: ^6.2.1
+
+  #Toast notifications
+  fluttertoast: ^8.2.4
+
 
 #Splash Screen Settings
 flutter_native_splash:

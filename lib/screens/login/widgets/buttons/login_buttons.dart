@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
+import 'package:varlik_yonetimi/screens/forgot_password/forgot_password.dart';
+import 'package:varlik_yonetimi/screens/login/login.dart';
+import 'package:varlik_yonetimi/screens/login/services/login_services.dart';
+import 'package:varlik_yonetimi/screens/main_screen/main_screen.dart';
+import 'package:varlik_yonetimi/screens/signup/sign_up.dart';
 
-class LoginButton extends StatelessWidget {
+class LoginButton extends StatefulWidget {
   const LoginButton({super.key});
+
+  @override
+  State<LoginButton> createState() => _LoginButtonState();
+}
+
+class _LoginButtonState extends State<LoginButton> {
+  late final TextEditingController _emailController = LoginScreen.of(context)!.loginEmailC;
+  late final TextEditingController _passwordController = LoginScreen.of(context)!.loginPasswordC;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () =>
+          LoginAuthService().login(context, email: _emailController.text, password: _passwordController.text),
       style: ElevatedButton.styleFrom(
         backgroundColor: VarlikYonetimiColors().goldColors,
       ),
@@ -26,9 +41,10 @@ class LoginScreenSignUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TextButton(
-        onPressed: null,
-        child: Text(
+    return TextButton(
+        onPressed: () =>
+            Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const SignUpScreen())),
+        child: const Text(
           "Sign Up",
           style: TextStyle(color: Colors.white, fontSize: 25),
         ));
@@ -44,7 +60,8 @@ class LoginWithGoogleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: ElevatedButton(
-      onPressed: () {},
+      onPressed: () => LoginAuthService().signInWithGoogle().then((value) => Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const MainScreen(), settings: RouteSettings(arguments: value)))),
       style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
       child: const Padding(
         padding: EdgeInsets.all(15.0),
@@ -60,7 +77,8 @@ class LoginForgotPasswordButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () => Navigator.push(
+          context, PageTransition(type: PageTransitionType.rightToLeft, child: const ForgotPasswordScreen())),
       child: Text(
         "Forgot password?",
         style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 25),
@@ -68,4 +86,3 @@ class LoginForgotPasswordButton extends StatelessWidget {
     );
   }
 }
-

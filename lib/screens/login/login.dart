@@ -10,9 +10,16 @@ class LoginScreen extends StatefulWidget {
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
+  
+
+  // ignore: library_private_types_in_public_api
+  static _LoginScreenState? of(BuildContext context) => context.findAncestorStateOfType<_LoginScreenState>();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final loginEmailC = TextEditingController();
+  final loginPasswordC = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,15 +27,15 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: VarlikYonetimiColors().blueColor,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: responsiveResizer(DeviceSize(context).height, 3.92)),
-        child: const Column(children: [
-          Spacer(
+        child: Column(children: [
+          const Spacer(
             flex: 10,
           ),
-          Expanded(
+          const Expanded(
             flex: 10,
             child: LoginLogoHeader(),
           ),
-          Spacer(
+          const Spacer(
             flex: 2,
           ),
           Expanded(
@@ -38,32 +45,34 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Expanded(
                     flex: 20,
-                    child: LoginEmailTextFormField(),
+                    child: LoginEmailTextFormField(
+                      emailController: loginEmailC,
+                    ),
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 2,
                   ),
                   Expanded(
                     flex: 20,
-                    child: LoginPasswordTextFormField(),
+                    child: LoginPasswordTextFormField(passwordController: loginPasswordC),
                   ),
-                  Spacer(),
-                  Expanded(
+                  const Spacer(),
+                  const Expanded(
                     flex: 13,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [LoginForgotPasswordButton()],
                     ),
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 6,
                   ),
                 ],
               )),
-          Spacer(
+          const Spacer(
             flex: 2,
           ),
-          Expanded(
+          const Expanded(
               flex: 5,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -71,8 +80,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(child: LoginButton()),
                 ],
               )),
-          Expanded(flex: 5, child: LoginOrWithSection()),
-          Expanded(
+          const Expanded(flex: 5, child: LoginOrWithSection()),
+          const Expanded(
               flex: 5,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -80,16 +89,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   LoginWithGoogleButton(),
                 ],
               )),
-          Spacer(
+          const Spacer(
             flex: 12,
           ),
-          Expanded(
+          const Expanded(
               flex: 5,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [LoginDontHaveAnAccountText(), LoginScreenSignUpButton()],
               )),
-          Spacer(flex: 7),
+          const Spacer(flex: 7),
         ]),
       ),
     );

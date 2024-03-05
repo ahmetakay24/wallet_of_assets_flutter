@@ -11,6 +11,7 @@ class SignUpScreen extends StatefulWidget {
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 
+  // ignore: library_private_types_in_public_api
   static _SignUpScreenState? of(BuildContext context) => context.findAncestorStateOfType<_SignUpScreenState>();
 }
 
@@ -22,67 +23,69 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: VarlikYonetimiColors().blueColor,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: responsiveResizer(DeviceSize(context).height, 3.92)),
-        child: Column(
-          children: [
-            const Spacer(flex: 10),
-            const Expanded(
-              flex: 10,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [SignUpTitleText(), SignUpSubtitleText()],
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: VarlikYonetimiColors().blueColor,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: responsiveResizer(DeviceSize(context).height, 3.92)),
+          child: Column(
+            children: [
+              const Spacer(flex: 10),
+              const Expanded(
+                flex: 10,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [SignUpTitleText(), SignUpSubtitleText()],
+                ),
               ),
-            ),
-            const Spacer(
-              flex: 5,
-            ),
-            Expanded(
-              flex: 40,
-              child: Column(
-                children: [
-                  Expanded(
-                    child: SignUpNameTextFormField(nameController: signupNameC),
-                  ),
-                  Expanded(
-                    child: SignUpSurnameTextField(surnameController: signupSurnameC),
-                  ),
-                  Expanded(
-                    child: SignUpEmailTextFormField(emailController: signupEmailC),
-                  ),
-                  Expanded(
-                      child: SignUpPasswordTextFormField(
-                    passwordController: signupPasswordC,
-                  )),
-                ],
+              const Spacer(
+                flex: 5,
               ),
-            ),
-            const Spacer(
-              flex: 5,
-            ),
-            const Expanded(flex: 7, child: SignUpCreateAccountButton()),
-            const Expanded(
-              flex: 7,
-              child: SignUpOrWithLine(),
-            ),
-            const Expanded(flex: 7, child: SignUpGoogleButton()),
-            const Spacer(
-              flex: 10,
-            ),
-            const Expanded(
-              flex: 8,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [SignUpAlreadyAccountText(), SignUpLoginButton()],
+              Expanded(
+                flex: 40,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: SignUpNameTextFormField(nameController: signupNameC),
+                    ),
+                    Expanded(
+                      child: SignUpSurnameTextField(surnameController: signupSurnameC),
+                    ),
+                    Expanded(
+                      child: SignUpEmailTextFormField(emailController: signupEmailC),
+                    ),
+                    Expanded(
+                        child: SignUpPasswordTextFormField(
+                      passwordController: signupPasswordC,
+                    )),
+                  ],
+                ),
               ),
-            ),
-            const Spacer(
-              flex: 10,
-            ),
-          ],
+              const Spacer(
+                flex: 5,
+              ),
+              const Expanded(flex: 7, child: SignUpCreateAccountButton()),
+              const Expanded(
+                flex: 7,
+                child: SignUpOrWithLine(),
+              ),
+              const Expanded(flex: 7, child: SignUpGoogleButton()),
+              const Spacer(
+                flex: 10,
+              ),
+              const Expanded(
+                flex: 8,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [SignUpAlreadyAccountText(), SignUpLoginButton()],
+                ),
+              ),
+              const Spacer(
+                flex: 10,
+              ),
+            ],
+          ),
         ),
       ),
     );

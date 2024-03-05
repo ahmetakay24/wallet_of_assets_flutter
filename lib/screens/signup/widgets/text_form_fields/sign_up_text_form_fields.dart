@@ -22,7 +22,6 @@ class _SignUpPasswordTextFormFieldState extends State<SignUpPasswordTextFormFiel
       controller: widget.passwordController,
       keyboardType: TextInputType.visiblePassword,
       autofillHints: const [AutofillHints.password],
-      cursorColor: VarlikYonetimiColors().goldColors,
       obscureText: _obscureText,
       style: const TextStyle(fontSize: 20, color: Colors.white),
       decoration: InputDecoration(
@@ -30,23 +29,14 @@ class _SignUpPasswordTextFormFieldState extends State<SignUpPasswordTextFormFiel
           borderRadius: BorderRadius.circular(15),
         ),
         hintText: "Password",
-        hintStyle: const TextStyle(
-          color: Colors.white,
-        ),
-        filled: true,
-        fillColor: Colors.transparent,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: VarlikYonetimiColors().goldColors),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: VarlikYonetimiColors().goldColors),
           borderRadius: BorderRadius.circular(15),
         ),
         suffixIcon: IconButton(
           icon: Icon(
             _obscureText ? Icons.visibility : Icons.visibility_off,
-            color: Colors.amber,
+            color: VarlikYonetimiColors().goldColors,
           ),
           onPressed: () {
             setState(() {
@@ -72,24 +62,11 @@ class SignUpNameTextFormField extends StatelessWidget {
     return TextFormField(
       controller: nameController,
       keyboardType: TextInputType.name,
-      cursorColor: VarlikYonetimiColors().goldColors,
       autofillHints: const [AutofillHints.name],
       style: const TextStyle(fontSize: 20, color: Colors.white),
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
         hintText: "Name",
-        hintStyle: const TextStyle(
-          color: Colors.white,
-        ),
-        filled: true,
-        fillColor: Colors.transparent,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: VarlikYonetimiColors().goldColors),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: VarlikYonetimiColors().goldColors),
           borderRadius: BorderRadius.circular(15),
         ),
@@ -97,7 +74,6 @@ class SignUpNameTextFormField extends StatelessWidget {
     );
   }
 }
-
 
 class SignUpSurnameTextField extends StatelessWidget {
   final TextEditingController surnameController;
@@ -113,23 +89,10 @@ class SignUpSurnameTextField extends StatelessWidget {
       controller: surnameController,
       keyboardType: TextInputType.text,
       autofillHints: const [AutofillHints.givenName],
-      cursorColor: VarlikYonetimiColors().goldColors,
       style: const TextStyle(fontSize: 20, color: Colors.white),
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
         hintText: "Surname",
-        hintStyle: const TextStyle(
-          color: Colors.white,
-        ),
-        filled: true,
-        fillColor: Colors.transparent,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: VarlikYonetimiColors().goldColors),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: VarlikYonetimiColors().goldColors),
           borderRadius: BorderRadius.circular(15),
         ),
@@ -152,23 +115,11 @@ class SignUpEmailTextFormField extends StatelessWidget {
       controller: emailController,
       keyboardType: TextInputType.emailAddress,
       autofillHints: const [AutofillHints.email],
-      cursorColor: VarlikYonetimiColors().goldColors,
       style: const TextStyle(fontSize: 20, color: Colors.white),
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
         hintText: "Email",
-        hintStyle: const TextStyle(
-          color: Colors.white,
-        ),
         filled: true,
-        fillColor: Colors.transparent,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: VarlikYonetimiColors().goldColors),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: VarlikYonetimiColors().goldColors),
           borderRadius: BorderRadius.circular(15),
         ),
@@ -176,4 +127,3 @@ class SignUpEmailTextFormField extends StatelessWidget {
     );
   }
 }
-
