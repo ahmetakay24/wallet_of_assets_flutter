@@ -10,9 +10,16 @@ class SignUpScreen extends StatefulWidget {
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
+
+  static _SignUpScreenState? of(BuildContext context) => context.findAncestorStateOfType<_SignUpScreenState>();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final signupNameC = TextEditingController();
+  final signupSurnameC = TextEditingController();
+  final signupEmailC = TextEditingController();
+  final signupPasswordC = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,17 +27,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: VarlikYonetimiColors().blueColor,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: responsiveResizer(DeviceSize(context).height, 3.92)),
-        child: const Column(
+        child: Column(
           children: [
-            Spacer(flex: 10),
-            Expanded(
+            const Spacer(flex: 10),
+            const Expanded(
               flex: 10,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [SignUpTitleText(), SignUpSubtitleText()],
               ),
             ),
-            Spacer(
+            const Spacer(
               flex: 5,
             ),
             Expanded(
@@ -38,38 +45,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Column(
                 children: [
                   Expanded(
-                    child: SignUpNameTextFormField(),
+                    child: SignUpNameTextFormField(nameController: signupNameC),
                   ),
                   Expanded(
-                    child: SignUpSurnameTextField(),
+                    child: SignUpSurnameTextField(surnameController: signupSurnameC),
                   ),
                   Expanded(
-                    child: SignUpEmailTextFormField(),
+                    child: SignUpEmailTextFormField(emailController: signupEmailC),
                   ),
-                  Expanded(child: SignUpPasswordTextFormField()),
+                  Expanded(
+                      child: SignUpPasswordTextFormField(
+                    passwordController: signupPasswordC,
+                  )),
                 ],
               ),
             ),
-            Spacer(
+            const Spacer(
               flex: 5,
             ),
-            Expanded(flex: 7, child: SignUpCreateAccountButton()),
-            Expanded(
+            const Expanded(flex: 7, child: SignUpCreateAccountButton()),
+            const Expanded(
               flex: 7,
               child: SignUpOrWithLine(),
             ),
-            Expanded(flex: 7, child: SignUpGoogleButton()),
-            Spacer(
+            const Expanded(flex: 7, child: SignUpGoogleButton()),
+            const Spacer(
               flex: 10,
             ),
-            Expanded(
+            const Expanded(
               flex: 8,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [SignUpAlreadyAccountText(), SignUpLoginButton()],
               ),
             ),
-            Spacer(
+            const Spacer(
               flex: 10,
             ),
           ],

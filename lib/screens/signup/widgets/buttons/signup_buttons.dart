@@ -1,11 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
 import 'package:varlik_yonetimi/screens/login/widgets/buttons/login_buttons.dart';
+import 'package:varlik_yonetimi/screens/signup/services/signup_auth_service.dart';
+import 'package:varlik_yonetimi/screens/signup/sign_up.dart';
 
-class SignUpCreateAccountButton extends StatelessWidget {
+class SignUpCreateAccountButton extends StatefulWidget {
   const SignUpCreateAccountButton({
     super.key,
   });
+
+  @override
+  State<SignUpCreateAccountButton> createState() => _SignUpCreateAccountButtonState();
+}
+
+class _SignUpCreateAccountButtonState extends State<SignUpCreateAccountButton> {
+  late TextEditingController _nameController;
+  late TextEditingController _surnameController;
+  late TextEditingController _emailController;
+  late TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _nameController = SignUpScreen.of(context)!.signupNameC;
+    _surnameController = SignUpScreen.of(context)!.signupSurnameC;
+    _emailController = SignUpScreen.of(context)!.signupEmailC;
+    _passwordController = SignUpScreen.of(context)!.signupPasswordC;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +36,11 @@ class SignUpCreateAccountButton extends StatelessWidget {
       children: [
         Expanded(
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => SignUpAuthService().registerUser(
+                    name: _nameController.text,
+                    surname: _surnameController.text,
+                    email: _emailController.text,
+                    password: _passwordController.text),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: VarlikYonetimiColors().goldColors,
                 ),
