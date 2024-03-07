@@ -14,7 +14,7 @@ class MainScreen extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              "Welcome ${user?.displayName ?? 'Guest'}",
+              "Welcome ${user?.displayName ?? "${MediaQuery.of(context).size.height}"}",
               style: const TextStyle(fontSize: 40, color: Colors.white),
             ),
           ),
