@@ -10,7 +10,6 @@ class LoginScreen extends StatefulWidget {
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
-  
 
   // ignore: library_private_types_in_public_api
   static _LoginScreenState? of(BuildContext context) => context.findAncestorStateOfType<_LoginScreenState>();

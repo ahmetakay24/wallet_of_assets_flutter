@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:varlik_yonetimi/core/core_methods.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
+import 'package:varlik_yonetimi/core/widgets/sheets/core_sheets.dart';
 import 'package:varlik_yonetimi/screens/forgot_password/services/forgot_password_service.dart';
 import 'package:varlik_yonetimi/screens/forgot_password/widgets/forgot_password_resources.dart';
 
@@ -8,18 +10,28 @@ class ForgotPasswordButton extends StatelessWidget {
     super.key,
     required this.forgotPasswordEmailC,
   });
-
   final TextEditingController forgotPasswordEmailC;
+
+  void forgotPasswordValidation() {}
 
   @override
   Widget build(BuildContext context) {
+
+    void forgotPasswordValidation() {
+      if (validateEmail(forgotPasswordEmailC.text) == false) {
+        ValidatorBottomSheet().show(context, "Please enter your email.");
+      } else {
+        ForgotPasswordAuthService().passwordReset(context, forgotPasswordEmailC.text.trim());
+      }
+    }
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
             child: ElevatedButton(
                 onPressed: () {
-                  ForgotPasswordAuthService().passwordReset(context, forgotPasswordEmailC.text.trim());
+                  forgotPasswordValidation();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: VarlikYonetimiColors().goldColors,

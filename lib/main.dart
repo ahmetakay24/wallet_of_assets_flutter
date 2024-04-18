@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:varlik_yonetimi/screens/login/login.dart';
-import 'package:varlik_yonetimi/screens/main_screen/main_screen.dart';
+import 'package:varlik_yonetimi/screens/wrapper/wrapper.dart';
 import 'package:varlik_yonetimi/theme/theme_data.dart';
 
 void main() async {
@@ -29,7 +28,7 @@ class VarlikYonetimi extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: darkTheme,
-      home: const SafeArea(child: MainScreen()),
+      home: const SafeArea(child: Wrapper()),
     );
   }
 }

@@ -53,6 +53,12 @@ dependencies:
   #Toast notifications
   fluttertoast: ^8.2.4
 
+  #States
+  provider: ^6.1.2
+
+  #Cache
+  shared_preferences: ^2.2.3
+
 
 #Splash Screen Settings
 flutter_native_splash:

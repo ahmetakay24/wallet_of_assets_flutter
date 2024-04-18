@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:varlik_yonetimi/core/core_methods.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
+import 'package:varlik_yonetimi/core/widgets/sheets/core_sheets.dart';
 import 'package:varlik_yonetimi/screens/login/login.dart';
 import 'package:varlik_yonetimi/screens/login/widgets/buttons/login_buttons.dart';
 import 'package:varlik_yonetimi/screens/signup/services/signup_auth_service.dart';
@@ -21,6 +23,21 @@ class _SignUpCreateAccountButtonState extends State<SignUpCreateAccountButton> {
   late final TextEditingController _emailController = SignUpScreen.of(context)!.signupEmailC;
   late final TextEditingController _passwordController = SignUpScreen.of(context)!.signupPasswordC;
 
+  void signUpValidation() {
+    if (validateEmail(_emailController.text) == true &&
+        validatePassword(_passwordController.text) == true &&
+        validateTextField(_nameController.text) == true &&
+        validateTextField(_surnameController.text) == true) {
+      SignUpAuthService().signUp(context,
+          name: _nameController.text,
+          surname: _surnameController.text,
+          email: _emailController.text,
+          password: _passwordController.text);
+    } else {
+      ValidatorBottomSheet().show(context, "You have provided incomplete or incorrect information. Please check it");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -28,11 +45,9 @@ class _SignUpCreateAccountButtonState extends State<SignUpCreateAccountButton> {
       children: [
         Expanded(
             child: ElevatedButton(
-                onPressed: () => SignUpAuthService().signUp(context,
-                    name: _nameController.text,
-                    surname: _surnameController.text,
-                    email: _emailController.text,
-                    password: _passwordController.text),
+                onPressed: () {
+                  signUpValidation();
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: VarlikYonetimiColors().goldColors,
                 ),

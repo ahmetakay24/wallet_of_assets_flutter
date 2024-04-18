@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:varlik_yonetimi/core/core_methods.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
+import 'package:varlik_yonetimi/core/widgets/sheets/core_sheets.dart';
 import 'package:varlik_yonetimi/screens/forgot_password/forgot_password.dart';
 import 'package:varlik_yonetimi/screens/login/login.dart';
 import 'package:varlik_yonetimi/screens/login/services/login_services.dart';
@@ -18,11 +20,24 @@ class _LoginButtonState extends State<LoginButton> {
   late final TextEditingController _emailController = LoginScreen.of(context)!.loginEmailC;
   late final TextEditingController _passwordController = LoginScreen.of(context)!.loginPasswordC;
 
+  void loginValidation() {
+    if (validateEmail(_emailController.text) == false && validatePassword(_passwordController.text) == true) {
+      ValidatorBottomSheet().show(context, "Please enter your email.");
+    } else if (validateEmail(_emailController.text) == true && validatePassword(_passwordController.text) == false) {
+      ValidatorBottomSheet().show(context, "Please enter your password.");
+    } else if (validateEmail(_emailController.text) == false && validatePassword(_passwordController.text) == false) {
+      ValidatorBottomSheet().show(context, "Please enter your email and password.");
+    } else {
+      LoginAuthService().login(context, email: _emailController.text, password: _passwordController.text);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () =>
-          LoginAuthService().login(context, email: _emailController.text, password: _passwordController.text),
+      onPressed: () {
+        loginValidation();
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: VarlikYonetimiColors().goldColors,
       ),
@@ -33,6 +48,8 @@ class _LoginButtonState extends State<LoginButton> {
     );
   }
 }
+
+//LoginAuthService().login(context, email: _emailController.text, password: _passwordController.text)
 
 class LoginScreenSignUpButton extends StatelessWidget {
   const LoginScreenSignUpButton({

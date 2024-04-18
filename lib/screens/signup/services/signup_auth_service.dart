@@ -20,7 +20,8 @@ class SignUpAuthService {
       final UserCredential userCredential =
           await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
       if (userCredential.user != null) {
-        _registerUser(name: name, surname: surname, email: email, password: password);
+        _registerUser(
+            userUID: userCredential.user!.uid, name: name, surname: surname, email: email, password: password);
         Fluttertoast.showToast(msg: "Account Created");
         navigator.push(MaterialPageRoute(
           builder: (context) => const LoginScreen(),
@@ -32,12 +33,14 @@ class SignUpAuthService {
   }
 
   Future<void> _registerUser({
+    required String userUID,
     required String name,
     required String surname,
     required String email,
     required String password,
   }) async {
     await userCollection.doc().set({
+      "userUID": userUID,
       "email": email,
       "name": name,
       "password": password,
