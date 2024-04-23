@@ -59,6 +59,9 @@ dependencies:
   #Cache
   shared_preferences: ^2.2.3
 
+  #BottomNavBar
+  google_nav_bar: ^5.0.6
+
 
 #Splash Screen Settings
 flutter_native_splash:
@@ -134,9 +137,9 @@ flutter:
         - asset: assets/fonts/CormorantGaramond-SemiBold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+    - family: Lato
+      fonts:
+        - asset: assets/fonts/Lato-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

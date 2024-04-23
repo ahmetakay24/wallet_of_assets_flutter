@@ -78,7 +78,7 @@ class LoginWithGoogleButton extends StatelessWidget {
     return Expanded(
         child: ElevatedButton(
       onPressed: () => LoginAuthService().signInWithGoogle().then((value) => Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const MainScreen(), settings: RouteSettings(arguments: value)))),
+          MaterialPageRoute(builder: (context) => const MainScreenManagement(), settings: RouteSettings(arguments: value)))),
       style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
       child: const Padding(
         padding: EdgeInsets.all(15.0),

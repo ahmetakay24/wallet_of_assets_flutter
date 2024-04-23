@@ -19,7 +19,7 @@ class LoginAuthService {
       if (userCredential.user != null) {
         Fluttertoast.showToast(msg: "Login successful");
         navigator.push(MaterialPageRoute(
-          builder: (context) => const MainScreen(),
+          builder: (context) => const MainScreenManagement(),
         ));
       }
     } catch (e) {
