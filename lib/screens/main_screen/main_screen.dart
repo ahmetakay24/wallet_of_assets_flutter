@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:varlik_yonetimi/core/core_utiliys.dart';
+import 'package:varlik_yonetimi/screens/main_screen/bottom_sheets/emtia_bottom_sheet/emtia_bottom_sheets.dart';
 import 'package:varlik_yonetimi/screens/main_screen/widgets/main_screen_bars.dart';
 import 'package:varlik_yonetimi/screens/main_screen/widgets/main_screen_buttons.dart';
 import 'package:varlik_yonetimi/screens/main_screen/widgets/main_screen_text_and_sections.dart';
@@ -31,7 +33,18 @@ class _MainScreenManagementState extends State<MainScreenManagement> {
           final userDocs = snapshot.data!.docs;
           final userData = userDocs.first.data() as Map<String, dynamic>;
           final userName = userData["name"];
-          return MainScreen(username: userName);
+          final emtia = userData["emtia"];
+          final foreign = userData["foreign"];
+          final estate = userData["estate"];
+          final local = userData["local"];
+
+          return MainScreen(
+            username: userName,
+            emtia: emtia,
+            foreign: foreign,
+            estate: estate,
+            local: local,
+          );
         } else {
           return const Center(
             child: Text("No data available"),
@@ -43,8 +56,12 @@ class _MainScreenManagementState extends State<MainScreenManagement> {
 }
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key, this.username});
+  const MainScreen({super.key, this.username, this.emtia, this.local, this.foreign, this.estate});
   final String? username;
+  final double? emtia;
+  final double? local;
+  final double? foreign;
+  final double? estate;
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -94,7 +111,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: AssetsButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return SizedBox(height: DeviceSize(context).height * 0.53, child: const EmtiaBottomSheet());
+                      },
+                    );
+                  },
                   icon: Icons.oil_barrel,
                   title: "Emtia",
                 ),

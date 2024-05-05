@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:varlik_yonetimi/core/core_methods.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
-import 'package:varlik_yonetimi/core/widgets/sheets/core_sheets.dart';
+import 'package:varlik_yonetimi/core/widgets/sheets/warning_sheets/core_sheets.dart';
 import 'package:varlik_yonetimi/screens/forgot_password/forgot_password.dart';
 import 'package:varlik_yonetimi/screens/login/login.dart';
 import 'package:varlik_yonetimi/screens/login/services/login_services.dart';

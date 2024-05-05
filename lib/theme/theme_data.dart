@@ -3,6 +3,7 @@ import 'package:varlik_yonetimi/core/core_utiliys.dart';
 
 final ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: VarlikYonetimiColors().blueColor,
+  appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent, elevation: 0),
   fontFamily: "CormorantGaramond",
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(

@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:varlik_yonetimi/core/widgets/sheets/core_sheets.dart';
+import 'package:varlik_yonetimi/core/widgets/sheets/warning_sheets/core_sheets.dart';
 import 'package:varlik_yonetimi/screens/main_screen/main_screen.dart';
 
 class LoginAuthService {
