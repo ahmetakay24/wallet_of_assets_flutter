@@ -9,7 +9,7 @@ class NewsModelView = _NewsModelViewBase with _$NewsModelView;
 
 abstract class _NewsModelViewBase with Store {
   @observable
-  List<Feed> news = [];
+  List<NewsModel> news = [];
 
   final url = "https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=demo";
 
@@ -21,31 +21,15 @@ abstract class _NewsModelViewBase with Store {
     Dio dio = Dio();
     dio.options.responseType = ResponseType.json;
 
-    try {
-      final response = await dio.get(url);
+    final response = await dio.get(url);
 
-      if (response.statusCode == HttpStatus.ok) {
-        final Map<String, dynamic> data = response.data;
-        final List<dynamic> feedList = data['feed'];
-
-        for (var feedData in feedList) {
-          Feed feed = Feed.fromJson(feedData);
-          news.add(feed);
-        }
-
-        for (var feed in news) {
-          print(feed.title);
-          print(feed.bannerImage);
-          print(feed.source);
-          print(feed.summary);
-          print(feed.timePublished);
-          print(feed.url);
-        }
-      } else {
-        throw Exception('Failed to load news');
-      }
-    } catch (e) {
-      print('Error fetching news: $e');
+    if (response.statusCode == HttpStatus.ok) {
+      final datas = jsonDecode(response.toString())["feed"] as List;
+      news = datas
+          .map(
+            (e) => NewsModel.fromJson(e),
+          )
+          .toList();
     }
   }
 }

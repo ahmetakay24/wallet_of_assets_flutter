@@ -14,13 +14,15 @@ class ShowBottomSheetHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
+        Expanded(
+          flex: 2,
           child: Divider(
-            color: Colors.black,
+            color: VarlikYonetimiColors().blueColor,
             height: 10,
           ),
         ),
         Expanded(
+          flex: 3,
           child: Center(
             child: Text(
               title,
@@ -29,6 +31,7 @@ class ShowBottomSheetHeader extends StatelessWidget {
           ),
         ),
         Expanded(
+          flex: 2,
           child: Divider(
             color: VarlikYonetimiColors().blueColor,
             height: 10,

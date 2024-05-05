@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:varlik_yonetimi/core/core_utiliys.dart';
 import 'package:varlik_yonetimi/screens/main_screen/bottom_sheets/emtia_bottom_sheet/emtia_bottom_sheets.dart';
-import 'package:varlik_yonetimi/screens/main_screen/widgets/main_screen_bars.dart';
-import 'package:varlik_yonetimi/screens/main_screen/widgets/main_screen_buttons.dart';
-import 'package:varlik_yonetimi/screens/main_screen/widgets/main_screen_text_and_sections.dart';
+import 'package:varlik_yonetimi/screens/main_screen/bottom_sheets/foreign_bottom_sheet/foreign_bottom_sheet.dart';
+import 'package:varlik_yonetimi/screens/main_screen/bottom_sheets/local_bottom_sheet/local_bottom_sheets.dart';
+import 'package:varlik_yonetimi/screens/main_screen/bottom_sheets/real_estate_bottom_sheet/real_estate_bottom_sheets.dart';
+import 'package:varlik_yonetimi/screens/main_screen/widgets/app_and_bottom_bar/main_screen_bars.dart';
+import 'package:varlik_yonetimi/screens/main_screen/widgets/buttons/main_screen_buttons.dart';
+import 'package:varlik_yonetimi/screens/main_screen/widgets/sections_and_texts/main_screen_text_and_sections.dart';
 
 class MainScreenManagement extends StatefulWidget {
   const MainScreenManagement({
@@ -89,7 +91,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: AssetsButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return const ForeignBottomSheet();
+                      },
+                    );
+                  },
                   icon: Icons.public,
                   title: "Foreign Stocks",
                 ),
@@ -100,7 +109,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: AssetsButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return const LocalBottomSheet();
+                      },
+                    );
+                  },
                   icon: Icons.location_on,
                   title: "Local Stocks",
                 ),
@@ -115,7 +131,7 @@ class _MainScreenState extends State<MainScreen> {
                     showModalBottomSheet(
                       context: context,
                       builder: (context) {
-                        return SizedBox(height: DeviceSize(context).height * 0.53, child: const EmtiaBottomSheet());
+                        return const EmtiaBottomSheet();
                       },
                     );
                   },
@@ -129,7 +145,14 @@ class _MainScreenState extends State<MainScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: AssetsButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return const RealEstateBottomSheet();
+                      },
+                    );
+                  },
                   icon: Icons.home,
                   title: "Real Estate",
                 ),

@@ -13,13 +13,13 @@ mixin _$NewsModelView on _NewsModelViewBase, Store {
       Atom(name: '_NewsModelViewBase.news', context: context);
 
   @override
-  List<Feed> get news {
+  List<NewsModel> get news {
     _$newsAtom.reportRead();
     return super.news;
   }
 
   @override
-  set news(List<Feed> value) {
+  set news(List<NewsModel> value) {
     _$newsAtom.reportWrite(value, super.news, () {
       super.news = value;
     });

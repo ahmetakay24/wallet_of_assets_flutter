@@ -35,3 +35,11 @@ bool? validatePassword(String value) {
       return true;
     }
   }
+
+  String parseDateTime(String dateTimeString) {
+  int year = int.parse(dateTimeString.substring(0, 4));
+  int month = int.parse(dateTimeString.substring(4, 6));
+  int day = int.parse(dateTimeString.substring(6, 8));
+
+  return "$day/$month/$year";
+}

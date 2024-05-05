@@ -45,7 +45,7 @@ class AssetsButton extends StatelessWidget {
               ),
               IconButton(
                 icon: const Icon(
-                  Icons.add,
+                  Icons.currency_exchange_outlined,
                   size: 30,
                 ),
                 onPressed: onPressed,

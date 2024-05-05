@@ -3,6 +3,7 @@ import 'package:varlik_yonetimi/core/core_utiliys.dart';
 import 'package:varlik_yonetimi/core/widgets/sheets/assets_sheets/buttons/assets_sheets_buttons.dart';
 import 'package:varlik_yonetimi/core/widgets/sheets/assets_sheets/section/assets_sheets_section.dart';
 import 'package:varlik_yonetimi/core/widgets/sheets/assets_sheets/text_and_headers/assets_sheets_text_and_headers.dart';
+import 'package:varlik_yonetimi/screens/main_screen/bottom_sheets/local_bottom_sheet/text_fields/local_bottom_sheet_text_fields.dart';
 
 class LocalBottomSheet extends StatelessWidget {
   const LocalBottomSheet({super.key});
@@ -10,7 +11,7 @@ class LocalBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: VarlikYonetimiColors().blueColor,
+      backgroundColor: VarlikYonetimiColors().goldColors,
       body: Column(children: [
         AssetsSheetSection(
           oneOrTwo: 1,
@@ -22,7 +23,7 @@ class LocalBottomSheet extends StatelessWidget {
               const Expanded(
                   flex: 10,
                   child: ShowBottomSheetHeader(
-                    title: "Local",
+                    title: "Local - Buy",
                   )),
               const Spacer(
                 flex: 5,
@@ -34,15 +35,44 @@ class LocalBottomSheet extends StatelessWidget {
                       Expanded(
                         flex: 4,
                         child: AssetsSheetsInputSection(
-                          widget: LocalQuantityTextFormField(),
                           title: "Quantity : ",
+                          widget: LocalBuyQuantityTextFormField(),
                         ),
                       ),
                       Spacer(),
                       Expanded(
                           flex: 4,
                           child: AssetsSheetsInputSection(
-                              widget: LocalQuantityPriceTextFormField(), title: "Quantity Purchase Price : "))
+                              widget: LocalBuyQuantityPriceTextFormField(), title: "Quantity Purchase Price : "))
+                    ],
+                  )),
+              const Spacer(
+                flex: 5,
+              ),
+              const Expanded(
+                  flex: 10,
+                  child: ShowBottomSheetHeader(
+                    title: "Local - Sell",
+                  )),
+              const Spacer(
+                flex: 5,
+              ),
+              const Expanded(
+                  flex: 20,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: AssetsSheetsInputSection(
+                          title: "Quantity : ",
+                          widget: LocalSellQuantityTextFormField(),
+                        ),
+                      ),
+                      Spacer(),
+                      Expanded(
+                          flex: 4,
+                          child: AssetsSheetsInputSection(
+                              widget: LocalSellQuantityPriceTextFormField(), title: "Quantity Purchase Price : "))
                     ],
                   )),
               const Spacer(
@@ -64,61 +94,3 @@ class LocalBottomSheet extends StatelessWidget {
   }
 }
 
-class LocalQuantityTextFormField extends StatelessWidget {
-  const LocalQuantityTextFormField({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final TextEditingController localQuantityController = TextEditingController();
-
-    return TextFormField(
-      controller: localQuantityController,
-      keyboardType: TextInputType.number,
-      style: const TextStyle(fontSize: 13, color: Colors.white),
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: VarlikYonetimiColors().blueColor),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        hintStyle: const TextStyle(
-          color: Colors.white,
-        ),
-        filled: true,
-        fillColor: Colors.transparent,
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: VarlikYonetimiColors().blueColor),
-          borderRadius: BorderRadius.circular(15),
-        ),
-      ),
-    );
-  }
-}
-
-class LocalQuantityPriceTextFormField extends StatelessWidget {
-  const LocalQuantityPriceTextFormField({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final TextEditingController localQuantityPriceController = TextEditingController();
-    return TextFormField(
-      controller: localQuantityPriceController,
-      keyboardType: TextInputType.number,
-      style: const TextStyle(fontSize: 13, color: Colors.white),
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: VarlikYonetimiColors().blueColor),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        hintStyle: const TextStyle(
-          color: Colors.white,
-        ),
-        filled: true,
-        fillColor: Colors.transparent,
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: VarlikYonetimiColors().blueColor),
-          borderRadius: BorderRadius.circular(15),
-        ),
-      ),
-    );
-  }
-}

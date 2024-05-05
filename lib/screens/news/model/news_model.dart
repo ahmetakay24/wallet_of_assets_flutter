@@ -3,56 +3,21 @@ part 'news_model.g.dart';
 
 @JsonSerializable()
 class NewsModel {
-  List<Feed>? feed;
+  String title;
+  String url;
+  String time_published;
+  String summary;
+  String banner_image;
 
-  NewsModel({this.feed});
+  NewsModel(this.title, this.url, this.time_published, this.summary, this.banner_image);
 
-  NewsModel.fromJson(Map<String, dynamic> json) {
-    if (json['feed'] != null) {
-      feed = <Feed>[];
-      json['feed'].forEach((v) {
-        feed!.add(Feed.fromJson(v));
-      });
-    }
+  factory NewsModel.fromJson(dynamic json) {
+    return NewsModel(json["title"] as String, json["url"] as String, json["time_published"] as String,
+        json["summary"] as String, json["banner_image"] as String);
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (feed != null) {
-      data['feed'] = feed!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-@JsonSerializable()
-class Feed {
-  String? title;
-  String? url;
-  String? timePublished;
-  String? summary;
-  String? bannerImage;
-  String? source;
-
-  Feed({this.title, this.url, this.timePublished, this.summary, this.bannerImage, this.source});
-
-  Feed.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    url = json['url'];
-    timePublished = json['time_published'];
-    summary = json['summary'];
-    bannerImage = json['banner_image'];
-    source = json['source'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['title'] = title;
-    data['url'] = url;
-    data['time_published'] = timePublished;
-    data['summary'] = summary;
-    data['banner_image'] = bannerImage;
-    data['source'] = source;
-    return data;
+  @override
+  String toString() {
+    return "{$title,$url,$time_published,$summary,$summary,$banner_image";
   }
 }
