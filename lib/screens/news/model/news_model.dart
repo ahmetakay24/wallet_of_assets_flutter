@@ -3,11 +3,11 @@ part 'news_model.g.dart';
 
 @JsonSerializable()
 class NewsModel {
-  String title;
-  String url;
-  String time_published;
-  String summary;
-  String banner_image;
+  String? title;
+  String? url;
+  String? time_published;
+  String? summary;
+  String? banner_image;
 
   NewsModel(this.title, this.url, this.time_published, this.summary, this.banner_image);
 

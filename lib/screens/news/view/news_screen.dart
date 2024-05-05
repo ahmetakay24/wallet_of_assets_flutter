@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:varlik_yonetimi/core/core_methods.dart';
@@ -56,15 +57,22 @@ class _NewsScreenState extends State<NewsScreen> {
                           const Spacer(
                             flex: 5,
                           ),
-                          Expanded(flex: 40, child: Image.network(newsModelView.news[index].banner_image)),
+                          Expanded(
+                              flex: 40,
+                              child: Image.network(
+                                newsModelView.news[index].banner_image ??
+                                    "https://www.globalexecutiveevents.com/assets/news/xl_5ffcd4e2e5.jpg",
+                                errorBuilder: (context, error, stackTrace) => Image.network(
+                                    "https://www.globalexecutiveevents.com/assets/news/xl_5ffcd4e2e5.jpg"),
+                              )),
                           const Spacer(
                             flex: 5,
                           ),
-                          Expanded(flex: 10, child: AutoSizeText(newsModelView.news[index].title)),
+                          Expanded(flex: 10, child: AutoSizeText(newsModelView.news[index].title ?? "")),
                           const Spacer(
                             flex: 5,
                           ),
-                          Expanded(flex: 25, child: AutoSizeText(newsModelView.news[index].summary)),
+                          Expanded(flex: 25, child: AutoSizeText(newsModelView.news[index].summary ?? "")),
                           const Spacer(
                             flex: 5,
                           ),
@@ -86,7 +94,8 @@ class _NewsScreenState extends State<NewsScreen> {
                             flex: 5,
                           ),
                           Expanded(
-                              flex: 10, child: AutoSizeText(parseDateTime(newsModelView.news[index].time_published))),
+                              flex: 10,
+                              child: AutoSizeText(parseDateTime(newsModelView.news[index].time_published ?? ""))),
                           const Spacer(
                             flex: 5,
                           )
@@ -101,3 +110,5 @@ class _NewsScreenState extends State<NewsScreen> {
     );
   }
 }
+
+//"https://www.globalexecutiveevents.com/assets/news/xl_5ffcd4e2e5.jpg"

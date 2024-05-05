@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:isolate';
 import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
 import 'package:varlik_yonetimi/screens/news/model/news_model.dart';
@@ -25,11 +26,15 @@ abstract class _NewsModelViewBase with Store {
 
     if (response.statusCode == HttpStatus.ok) {
       final datas = jsonDecode(response.toString())["feed"] as List;
-      news = datas
-          .map(
-            (e) => NewsModel.fromJson(e),
-          )
-          .toList();
+      news = await Isolate.run(
+        () {
+          return datas
+              .map(
+                (e) => NewsModel.fromJson(e),
+              )
+              .toList();
+        },
+      );
     }
   }
 }
