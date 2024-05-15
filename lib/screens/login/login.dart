@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.symmetric(horizontal: responsiveResizer(DeviceSize(context).height, 3.92)),
         child: Column(children: [
           const Spacer(
-            flex: 10,
+            flex: 8,
           ),
           const Expanded(
             flex: 10,
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
             flex: 2,
           ),
           Expanded(
-              flex: 17,
+              flex: 20,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const Spacer(),
                   const Expanded(
-                    flex: 13,
+                    flex: 15,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [LoginForgotPasswordButton()],
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               )),
           const Spacer(
-            flex: 12,
+            flex: 7,
           ),
           const Expanded(
               flex: 5,

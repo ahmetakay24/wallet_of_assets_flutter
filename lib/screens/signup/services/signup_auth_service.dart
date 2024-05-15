@@ -39,12 +39,17 @@ class SignUpAuthService {
     required String email,
     required String password,
   }) async {
-    await userCollection.doc().set({
+    await userCollection.doc(userUID).set({
       "userUID": userUID,
       "email": email,
       "name": name,
       "password": password,
       "surname": surname,
+      "total of assets": 0,
+      "emtia" : 0,
+      "foreign" : 0,
+      "estate" : 0,
+      "local" : 0,
     });
   }
 }

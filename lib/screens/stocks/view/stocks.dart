@@ -25,6 +25,11 @@ class _StocksState extends State<Stocks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back),
+          color: VarlikYonetimiColors().goldColors,
+        ),
         title: Text(
           "Stocks",
           style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 30),

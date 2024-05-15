@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:varlik_yonetimi/core/core_methods.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
+import 'package:varlik_yonetimi/main.dart';
 import 'package:varlik_yonetimi/screens/news/view_model/news_view_model.dart';
 
 class NewsScreen extends StatefulWidget {
@@ -27,6 +28,11 @@ class _NewsScreenState extends State<NewsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          color: VarlikYonetimiColors().goldColors,
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text(
           "News",
           style: TextStyle(fontSize: 30, color: VarlikYonetimiColors().goldColors),
@@ -77,6 +83,7 @@ class _NewsScreenState extends State<NewsScreen> {
                           const Spacer(
                             flex: 5,
                           ),
+                          //"https://www.globalexecutiveevents.com/assets/news/xl_5ffcd4e2e5.jpg"
                           Expanded(flex: 10, child: AutoSizeText(newsModelView.news[index].title ?? "")),
                           const Spacer(
                             flex: 5,

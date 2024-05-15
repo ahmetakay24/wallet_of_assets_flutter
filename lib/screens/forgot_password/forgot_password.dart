@@ -31,10 +31,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(
-              flex: 10,
+              flex: 5,
             ),
             const Expanded(
-              flex: 2,
+              flex: 5,
               child: ForgotPasswordTitle(),
             ),
             const Expanded(
@@ -43,15 +43,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ),
             const Spacer(),
             Expanded(flex: 2, child: ForgotPasswordEmailTextFormField(emailController: forgotPasswordEmailC)),
-            const Spacer(
-              flex: 2,
-            ),
+            const Spacer(),
             Expanded(
               flex: 2,
               child: ForgotPasswordButton(forgotPasswordEmailC: forgotPasswordEmailC),
             ),
             const Spacer(
-              flex: 10,
+              flex: 5,
             ),
           ],
         ),

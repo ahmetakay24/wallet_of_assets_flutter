@@ -6,12 +6,13 @@ class AssetsButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.icon,
-    required this.onPressed,
+    required this.onPressed, required this.assets,
   });
 
   final String title;
   final IconData icon;
   final VoidCallback onPressed;
+  final double assets;
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +41,7 @@ class AssetsButton extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: Text("\$100,000,000,21",
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(fontFamily: "Lato")),
+                child: Text("\$$assets", style: Theme.of(context).textTheme.titleSmall?.copyWith(fontFamily: "Lato")),
               ),
               IconButton(
                 icon: const Icon(

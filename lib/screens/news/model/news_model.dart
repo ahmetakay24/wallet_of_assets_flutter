@@ -13,7 +13,7 @@ class NewsModel {
 
   factory NewsModel.fromJson(dynamic json) {
     return NewsModel(json["title"] as String, json["url"] as String, json["time_published"] as String,
-        json["summary"] as String, json["banner_image"] as String);
+        json["summary"] as String, json["banner_image"] != null ? json["banner_image"] as String : "https://www.globalexecutiveevents.com/assets/news/xl_5ffcd4e2e5.jpg");
   }
 
   @override

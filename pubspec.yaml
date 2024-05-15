@@ -58,10 +58,7 @@ dependencies:
 
   #Cache
   shared_preferences: ^2.2.3
-
-  #BottomNavBar
-  google_nav_bar: ^5.0.6
-
+  
   #stateManagements
   flutter_mobx: ^2.2.1+1
   mobx_codegen: ^2.6.1

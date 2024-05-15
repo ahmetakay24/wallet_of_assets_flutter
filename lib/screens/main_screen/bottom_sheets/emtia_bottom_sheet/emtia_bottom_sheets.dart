@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
 import 'package:varlik_yonetimi/core/widgets/sheets/assets_sheets/buttons/assets_sheets_buttons.dart';
@@ -5,13 +7,91 @@ import 'package:varlik_yonetimi/core/widgets/sheets/assets_sheets/section/assets
 import 'package:varlik_yonetimi/core/widgets/sheets/assets_sheets/text_and_headers/assets_sheets_text_and_headers.dart';
 import 'package:varlik_yonetimi/screens/main_screen/bottom_sheets/emtia_bottom_sheet/text_fields/emtia_bottom_sheet_text_fields.dart';
 
-class EmtiaBottomSheet extends StatelessWidget {
+class EmtiaBottomSheet extends StatefulWidget {
   const EmtiaBottomSheet({super.key});
 
   @override
+  State<EmtiaBottomSheet> createState() => _EmtiaBottomSheetState();
+}
+
+class _EmtiaBottomSheetState extends State<EmtiaBottomSheet> {
+  @override
   Widget build(BuildContext context) {
-    /*final user = FirebaseAuth.instance;
-    CollectionReference assetsRef = FirebaseFirestore.instance.collection("users");*/
+    final user = FirebaseAuth.instance;
+    CollectionReference assetsRef = FirebaseFirestore.instance.collection("users");
+
+    TextEditingController goldBuyQuantityTextFormField = TextEditingController();
+    int goldBuyQuantity = 0;
+
+    TextEditingController goldBuyQuantityPriceTextFormField = TextEditingController();
+    double goldBuyQuantityPrice = 0;
+
+    TextEditingController goldSellQuantityTextFormField = TextEditingController();
+    int goldSellQuantity = 0;
+
+    TextEditingController goldSellQuantityPriceTextFormField = TextEditingController();
+    double goldSellQuantityPrice = 0;
+
+    TextEditingController oilBuyQuantityTextFormField = TextEditingController();
+    int oilBuyQuantity = 0;
+
+    TextEditingController oilBuyQuantityPriceTextFormField = TextEditingController();
+    double oilBuyQuantityPrice = 0;
+
+    TextEditingController oilSellQuantityTextFormField = TextEditingController();
+    int oilSellQuantity = 0;
+    
+    TextEditingController oilSellQuantityPriceTextFormField = TextEditingController();
+    double oilSellQuantityPrice = 0;
+
+    void updateGoldBuyQuantity() {
+      setState(() {
+        goldBuyQuantity = int.parse(goldBuyQuantityTextFormField.text);
+      });
+    }
+
+    void updateGoldBuyQuantityPrice() {
+      setState(() {
+        goldBuyQuantityPrice = double.parse(goldBuyQuantityPriceTextFormField.text);
+      });
+    }
+
+    void updateGoldSellQuantity() {
+      setState(() {
+        goldSellQuantity = int.parse(goldSellQuantityTextFormField.text);
+      });
+    }
+
+    void updateGoldSellQuantityPrice() {
+      setState(() {
+        goldSellQuantityPrice = double.parse(goldSellQuantityPriceTextFormField.text);
+      });
+    }
+
+    void updateOilBuyQuantity() {
+      setState(() {
+        oilBuyQuantity = int.parse(oilBuyQuantityTextFormField.text);
+      });
+    }
+
+    void updateOilBuyQuantityPrice() {
+      setState(() {
+        oilBuyQuantityPrice = double.parse(oilBuyQuantityPriceTextFormField.text);
+      });
+    }
+
+    void updateOilSellQuantity() {
+      setState(() {
+        oilSellQuantity = int.parse(oilSellQuantityTextFormField.text);
+      });
+    }
+
+    void updateOilSellQuantityPrice() {
+      setState(() {
+        oilSellQuantityPrice = double.parse(oilSellQuantityPriceTextFormField.text);
+      });
+    }
+
     return Scaffold(
       backgroundColor: VarlikYonetimiColors().goldColors,
       body: SingleChildScrollView(
@@ -38,15 +118,20 @@ class EmtiaBottomSheet extends StatelessWidget {
                         Expanded(
                           flex: 4,
                           child: AssetsSheetsInputSection(
-                            widget: GoldBuyQuantityTextFormField(),
+                            widget: GoldBuyQuantityTextFormField(
+                              controller: goldBuyQuantityTextFormField,
+                            ),
                             title: "Quantity : ",
                           ),
                         ),
                         const Spacer(),
-                        const Expanded(
+                        Expanded(
                             flex: 4,
                             child: AssetsSheetsInputSection(
-                                widget: GoldBuyQuantityPriceTextFormField(), title: "Quantity Purchase Price : "))
+                                widget: GoldBuyQuantityPriceTextFormField(
+                                  controller: goldBuyQuantityPriceTextFormField,
+                                ),
+                                title: "Quantity Purchase Price : "))
                       ],
                     )),
                 const Spacer(
@@ -60,22 +145,27 @@ class EmtiaBottomSheet extends StatelessWidget {
                 const Spacer(
                   flex: 5,
                 ),
-                const Expanded(
+                Expanded(
                     flex: 20,
                     child: Column(
                       children: [
                         Expanded(
                           flex: 4,
                           child: AssetsSheetsInputSection(
-                            widget: GoldSellQuantityTextFormField(),
+                            widget: GoldSellQuantityTextFormField(
+                              controller: goldSellQuantityTextFormField,
+                            ),
                             title: "Quantity : ",
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Expanded(
                             flex: 4,
                             child: AssetsSheetsInputSection(
-                                widget: GoldSellQuantityPriceTextFormField(), title: "Quantity Purchase Price : "))
+                                widget: GoldSellQuantityPriceTextFormField(
+                                  controller: goldSellQuantityPriceTextFormField,
+                                ),
+                                title: "Quantity Purchase Price : "))
                       ],
                     )),
                 const Spacer(
@@ -96,15 +186,20 @@ class EmtiaBottomSheet extends StatelessWidget {
                         Expanded(
                           flex: 4,
                           child: AssetsSheetsInputSection(
-                            widget: OilBuyQuantityTextFormField(),
+                            widget: OilBuyQuantityTextFormField(
+                              controller: oilBuyQuantityTextFormField,
+                            ),
                             title: "Quantity : ",
                           ),
                         ),
                         const Spacer(),
-                        const Expanded(
+                        Expanded(
                             flex: 4,
                             child: AssetsSheetsInputSection(
-                                widget: OilBuyQuantityPriceTextFormField(), title: "Quantity Purchase Price : "))
+                                widget: OilBuyQuantityPriceTextFormField(
+                                  controller: oilBuyQuantityPriceTextFormField,
+                                ),
+                                title: "Quantity Purchase Price : "))
                       ],
                     )),
                 const Spacer(
@@ -118,22 +213,27 @@ class EmtiaBottomSheet extends StatelessWidget {
                 const Spacer(
                   flex: 5,
                 ),
-                const Expanded(
+                Expanded(
                     flex: 20,
                     child: Column(
                       children: [
                         Expanded(
                           flex: 4,
                           child: AssetsSheetsInputSection(
-                            widget: OilSellQuantityTextFormField(),
+                            widget: OilSellQuantityTextFormField(
+                              controller: oilSellQuantityTextFormField,
+                            ),
                             title: "Quantity : ",
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Expanded(
                             flex: 4,
                             child: AssetsSheetsInputSection(
-                                widget: OilSellQuantityPriceTextFormField(), title: "Quantity Purchase Price : "))
+                                widget: OilSellQuantityPriceTextFormField(
+                                  controller: oilSellQuantityPriceTextFormField,
+                                ),
+                                title: "Quantity Purchase Price : "))
                       ],
                     )),
                 const Spacer(
@@ -143,10 +243,29 @@ class EmtiaBottomSheet extends StatelessWidget {
                     flex: 15,
                     child: AssetsSheetsConfirmButton(
                       fun: () {
-                        /*assetsRef.doc(user.currentUser!.uid).update({
-                          'gold': GoldBuyQuantityTextFormField().goldBuyQuantityController.value,
-                          'oil': OilBuyQuantityTextFormField().oilBuyQuantityController.value
-                        });*/
+                        updateGoldBuyQuantity();
+                        updateGoldBuyQuantityPrice();
+                        updateGoldSellQuantity();
+                        updateGoldSellQuantityPrice();
+                        updateOilBuyQuantity();
+                        updateOilBuyQuantityPrice();
+                        updateOilSellQuantity();
+                        updateOilSellQuantityPrice();
+                        assetsRef.doc(user.currentUser!.uid).update({
+                          'quantity of gold': calculator(goldBuyQuantity, goldSellQuantity) ,
+                          'quantity of oil barrel': calculator(oilBuyQuantity, oilSellQuantity),
+                          'emtia': totalEmtiaCalculator(
+                            goldBuyQuantityPrice,
+                            goldSellQuantityPrice,
+                            goldSellQuantity,
+                            goldBuyQuantity,
+                            oilBuyQuantityPrice,
+                            oilSellQuantityPrice,
+                            oilSellQuantity,
+                            oilBuyQuantityPrice,
+                          )
+                        });
+                        Navigator.pop(context);
                       },
                     )),
                 const Spacer(
@@ -159,4 +278,30 @@ class EmtiaBottomSheet extends StatelessWidget {
       ),
     );
   }
+
+  int calculator(int buy, int sell) {
+    if (buy - sell >= 0) {
+      return buy - sell;
+    } else {
+      return 0;
+    }
+  }
+
+  double totalEmtiaCalculator(var goldBuyPrice, var goldSellPrice, var goldSellQuantity, var goldBuyQuantity,
+      var oilBuyPrice, var oilSellPrice, var oilSellQuantity, var oilBuyQuantity) {
+    double totalOfGold = (goldBuyPrice * goldBuyQuantity) - (goldSellPrice * goldSellQuantity);
+    if (totalOfGold < 0) {
+      totalOfGold = 0;
+    }
+
+    double totalOfOil = (oilBuyPrice * oilBuyQuantity) - (oilSellPrice * oilSellQuantity);
+    if (totalOfOil < 0) {
+      totalOfOil = 0;
+    }
+
+    return totalOfGold + totalOfOil;
+  }
 }
+
+//ahmetakaybusiness@gmail.com
+//123456

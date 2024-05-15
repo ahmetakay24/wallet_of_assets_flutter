@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
 
 class LocalBuyQuantityTextFormField extends StatelessWidget {
-  const LocalBuyQuantityTextFormField({super.key});
+  final TextEditingController controller;
+  const LocalBuyQuantityTextFormField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController localBuyQuantityController = TextEditingController();
-
     return TextFormField(
-      controller: localBuyQuantityController,
+      controller: controller,
       keyboardType: TextInputType.number,
       style: const TextStyle(fontSize: 13, color: Colors.white),
       decoration: InputDecoration(
@@ -32,13 +31,13 @@ class LocalBuyQuantityTextFormField extends StatelessWidget {
 }
 
 class LocalBuyQuantityPriceTextFormField extends StatelessWidget {
-  const LocalBuyQuantityPriceTextFormField({super.key});
+  final TextEditingController controller;
+  const LocalBuyQuantityPriceTextFormField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController localBuyQuantityPriceController = TextEditingController();
     return TextFormField(
-      controller: localBuyQuantityPriceController,
+      controller: controller,
       keyboardType: TextInputType.number,
       style: const TextStyle(fontSize: 13, color: Colors.white),
       decoration: InputDecoration(
@@ -61,14 +60,13 @@ class LocalBuyQuantityPriceTextFormField extends StatelessWidget {
 }
 
 class LocalSellQuantityTextFormField extends StatelessWidget {
-  const LocalSellQuantityTextFormField({super.key});
+  final TextEditingController controller;
+  const LocalSellQuantityTextFormField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController localSellQuantityController = TextEditingController();
-
     return TextFormField(
-      controller: localSellQuantityController,
+      controller: controller,
       keyboardType: TextInputType.number,
       style: const TextStyle(fontSize: 13, color: Colors.white),
       decoration: InputDecoration(
@@ -91,13 +89,13 @@ class LocalSellQuantityTextFormField extends StatelessWidget {
 }
 
 class LocalSellQuantityPriceTextFormField extends StatelessWidget {
-  const LocalSellQuantityPriceTextFormField({super.key});
+  final TextEditingController controller;
+  const LocalSellQuantityPriceTextFormField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController localSellQuantityPriceController = TextEditingController();
     return TextFormField(
-      controller: localSellQuantityPriceController,
+      controller: controller,
       keyboardType: TextInputType.number,
       style: const TextStyle(fontSize: 13, color: Colors.white),
       decoration: InputDecoration(

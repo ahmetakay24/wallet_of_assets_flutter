@@ -33,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: [
               const Spacer(flex: 10),
               const Expanded(
-                flex: 10,
+                flex: 20,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [SignUpTitleText(), SignUpSubtitleText()],
@@ -47,35 +47,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                   children: [
                     Expanded(
+                      flex: 9,
                       child: SignUpNameTextFormField(nameController: signupNameC),
                     ),
+                    const Spacer(),
                     Expanded(
+                      flex: 9,
                       child: SignUpSurnameTextField(surnameController: signupSurnameC),
                     ),
+                    const Spacer(),
                     Expanded(
+                      flex: 9,
                       child: SignUpEmailTextFormField(emailController: signupEmailC),
                     ),
+                    const Spacer(),
                     Expanded(
+                        flex: 9,
                         child: SignUpPasswordTextFormField(
-                      passwordController: signupPasswordC,
-                    )),
+                          passwordController: signupPasswordC,
+                        )),
                   ],
                 ),
               ),
               const Spacer(
                 flex: 5,
               ),
-              const Expanded(flex: 7, child: SignUpCreateAccountButton()),
+              const Expanded(flex: 10, child: SignUpCreateAccountButton()),
               const Expanded(
                 flex: 7,
                 child: SignUpOrWithLine(),
               ),
-              const Expanded(flex: 7, child: SignUpGoogleButton()),
+              const Expanded(flex: 10, child: SignUpGoogleButton()),
               const Spacer(
                 flex: 10,
               ),
               const Expanded(
-                flex: 8,
+                flex: 10,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [SignUpAlreadyAccountText(), SignUpLoginButton()],

@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:varlik_yonetimi/core/core_methods.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
 import 'package:varlik_yonetimi/core/widgets/sheets/assets_sheets/buttons/assets_sheets_buttons.dart';
 import 'package:varlik_yonetimi/core/widgets/sheets/assets_sheets/section/assets_sheets_section.dart';
@@ -13,89 +16,149 @@ class RealEstateBottomSheet extends StatefulWidget {
 }
 
 class _RealEstateBottomSheetState extends State<RealEstateBottomSheet> {
+  final user = FirebaseAuth.instance;
+  CollectionReference assetsRef = FirebaseFirestore.instance.collection("users");
+
+  TextEditingController realEstateBuyQuantityTextFormField = TextEditingController();
+  int realEstateBuyQuantity = 0;
+
+  TextEditingController realEstateBuyQuantityPriceTextFormField = TextEditingController();
+  double realEstateBuyQuantityPrice = 0;
+
+  TextEditingController realEstateSellQuantityTextFormField = TextEditingController();
+  int realEstateSellQuantity = 0;
+
+  TextEditingController realEstateSellQuantityPriceTextFormField = TextEditingController();
+  double realEstateSellQuantityPrice = 0;
+
+  void updaterealEstateBuyQuantity() {
+    setState(() {
+      realEstateBuyQuantity = int.parse(realEstateBuyQuantityTextFormField.text);
+    });
+  }
+
+  void updaterealEstateBuyQuantityPrice() {
+    setState(() {
+      realEstateBuyQuantityPrice = double.parse(realEstateBuyQuantityPriceTextFormField.text);
+    });
+  }
+
+  void updaterealEstateSellQuantity() {
+    setState(() {
+      realEstateSellQuantity = int.parse(realEstateSellQuantityTextFormField.text);
+    });
+  }
+
+  void updaterealEstateSellQuantityPrice() {
+    setState(() {
+      realEstateSellQuantityPrice = double.parse(realEstateSellQuantityPriceTextFormField.text);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: VarlikYonetimiColors().goldColors,
-      body: Column(children: [
-        AssetsSheetSection(
-          oneOrTwo: 1,
-          widget: Column(
-            children: [
-              const Spacer(
-                flex: 5,
-              ),
-              const Expanded(
-                  flex: 10,
-                  child: ShowBottomSheetHeader(
-                    title: "Estate - Buy",
-                  )),
-              const Spacer(
-                flex: 5,
-              ),
-              const Expanded(
-                  flex: 20,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        flex: 4,
-                        child: AssetsSheetsInputSection(
-                          title: "Quantity : ",
-                          widget: RealEstateBuyQuantityTextFormField(),
-                        ),
-                      ),
-                      Spacer(),
-                      Expanded(
+      body: SingleChildScrollView(
+        child: Column(children: [
+          AssetsSheetSection(
+            oneOrTwo: 1,
+            widget: Column(
+              children: [
+                const Spacer(
+                  flex: 5,
+                ),
+                const Expanded(
+                    flex: 10,
+                    child: ShowBottomSheetHeader(
+                      title: "Estate - Buy",
+                    )),
+                const Spacer(
+                  flex: 5,
+                ),
+                Expanded(
+                    flex: 20,
+                    child: Column(
+                      children: [
+                        Expanded(
                           flex: 4,
                           child: AssetsSheetsInputSection(
-                              widget: RealEstateBuyQuantityPriceTextFormField(), title: "Quantity Purchase Price : "))
-                    ],
-                  )),
-              const Spacer(
-                flex: 5,
-              ),
-              const Expanded(
-                  flex: 10,
-                  child: ShowBottomSheetHeader(
-                    title: "Estate - Sell",
-                  )),
-              const Spacer(
-                flex: 5,
-              ),
-              const Expanded(
-                  flex: 20,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        flex: 4,
-                        child: AssetsSheetsInputSection(
-                          title: "Quantity : ",
-                          widget: RealEstateSellQuantityTextFormField(),
+                            title: "Quantity : ",
+                            widget: RealEstateBuyQuantityTextFormField(
+                              controller: realEstateBuyQuantityTextFormField,
+                            ),
+                          ),
                         ),
-                      ),
-                      Spacer(),
-                      Expanded(
+                        const Spacer(),
+                        Expanded(
+                            flex: 4,
+                            child: AssetsSheetsInputSection(
+                                widget: RealEstateBuyQuantityPriceTextFormField(
+                                  controller: realEstateBuyQuantityPriceTextFormField,
+                                ),
+                                title: "Quantity Purchase Price : "))
+                      ],
+                    )),
+                const Spacer(
+                  flex: 5,
+                ),
+                const Expanded(
+                    flex: 10,
+                    child: ShowBottomSheetHeader(
+                      title: "Estate - Sell",
+                    )),
+                const Spacer(
+                  flex: 5,
+                ),
+                Expanded(
+                    flex: 20,
+                    child: Column(
+                      children: [
+                        Expanded(
                           flex: 4,
                           child: AssetsSheetsInputSection(
-                              widget: RealEstateSellQuantityPriceTextFormField(), title: "Quantity Purchase Price : "))
-                    ],
-                  )),
-              const Spacer(
-                flex: 5,
-              ),
-              Expanded(
-                  flex: 15,
-                  child: AssetsSheetsConfirmButton(
-                    fun: () {},
-                  )),
-              const Spacer(
-                flex: 5,
-              ),
-            ],
-          ),
-        )
-      ]),
+                            title: "Quantity : ",
+                            widget: RealEstateSellQuantityTextFormField(
+                              controller: realEstateSellQuantityTextFormField,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        Expanded(
+                            flex: 4,
+                            child: AssetsSheetsInputSection(
+                                widget: RealEstateSellQuantityPriceTextFormField(
+                                  controller: realEstateSellQuantityPriceTextFormField,
+                                ),
+                                title: "Quantity Purchase Price : "))
+                      ],
+                    )),
+                const Spacer(
+                  flex: 5,
+                ),
+                Expanded(
+                    flex: 15,
+                    child: AssetsSheetsConfirmButton(
+                      fun: () {
+                        updaterealEstateBuyQuantity();
+                        updaterealEstateBuyQuantityPrice();
+                        updaterealEstateSellQuantity();
+                        updaterealEstateSellQuantityPrice();
+                        assetsRef.doc(user.currentUser!.uid).update({
+                          "estate": totalCalculator(realEstateBuyQuantityPrice, realEstateSellQuantityPrice,
+                              realEstateSellQuantity, realEstateBuyQuantity)
+                        });
+                        Navigator.pop(context);
+                      },
+                    )),
+                const Spacer(
+                  flex: 5,
+                ),
+              ],
+            ),
+          )
+        ]),
+      ),
     );
   }
 }
-

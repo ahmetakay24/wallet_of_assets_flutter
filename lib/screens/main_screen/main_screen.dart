@@ -20,7 +20,6 @@ class MainScreenManagement extends StatefulWidget {
 
 class _MainScreenManagementState extends State<MainScreenManagement> {
   final user = FirebaseAuth.instance;
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -34,18 +33,123 @@ class _MainScreenManagementState extends State<MainScreenManagement> {
         } else if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
           final userDocs = snapshot.data!.docs;
           final userData = userDocs.first.data() as Map<String, dynamic>;
-          final userName = userData["name"];
-          final emtia = userData["emtia"];
-          final foreign = userData["foreign"];
-          final estate = userData["estate"];
-          final local = userData["local"];
+          final String userName = userData["name"];
+          final double assets = double.parse(userData["total of assets"].toString());
+          final double emtia = double.parse(userData["emtia"].toString());
+          final double foreign = double.parse(userData["foreign"].toString());
+          final double estate = double.parse(userData["estate"].toString());
+          final double local = double.parse(userData["local"].toString());
 
-          return MainScreen(
-            username: userName,
-            emtia: emtia,
-            foreign: foreign,
-            estate: estate,
-            local: local,
+          void updateAssets() {
+            FirebaseFirestore.instance.collection("users").doc(user.currentUser!.uid).update({
+              "total of assets": emtia + foreign + estate + local,
+            });
+          }
+
+          return Scaffold(
+            resizeToAvoidBottomInset: false,
+            appBar: MainScreenAppBar(
+              name: userName,
+            ),
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Column(
+                children: [
+                  Expanded(
+                      flex: 35,
+                      child: TotalAssetsSection(
+                        assets: assets,
+                      )),
+                  const Expanded(
+                    flex: 8,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: AssetsManagementsTitle(),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 15,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: AssetsButton(
+                        assets: foreign,
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return const ForeignBottomSheet();
+                            },
+                          );
+                          updateAssets();
+                        },
+                        icon: Icons.public,
+                        title: "Foreign Stocks",
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 15,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: AssetsButton(
+                        assets: local,
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return const LocalBottomSheet();
+                            },
+                          );
+                          updateAssets();
+                        },
+                        icon: Icons.location_on,
+                        title: "Local Stocks",
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 15,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: AssetsButton(
+                        assets: emtia,
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return const EmtiaBottomSheet();
+                            },
+                          );
+                          updateAssets();
+                        },
+                        icon: Icons.oil_barrel,
+                        title: "Emtia",
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 15,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: AssetsButton(
+                        assets: estate,
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return const RealEstateBottomSheet();
+                            },
+                          );
+                          updateAssets();
+                        },
+                        icon: Icons.home,
+                        title: "Real Estate",
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           );
         } else {
           return const Center(
@@ -53,115 +157,6 @@ class _MainScreenManagementState extends State<MainScreenManagement> {
           );
         }
       },
-    );
-  }
-}
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key, this.username, this.emtia, this.local, this.foreign, this.estate});
-  final String? username;
-  final double? emtia;
-  final double? local;
-  final double? foreign;
-  final double? estate;
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const MainScreenAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(
-          children: [
-            const Expanded(flex: 35, child: TotalAssetsSection()),
-            const Expanded(
-              flex: 8,
-              child: Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: AssetsManagementsTitle(),
-              ),
-            ),
-            Expanded(
-              flex: 15,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: AssetsButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return const ForeignBottomSheet();
-                      },
-                    );
-                  },
-                  icon: Icons.public,
-                  title: "Foreign Stocks",
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 15,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: AssetsButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return const LocalBottomSheet();
-                      },
-                    );
-                  },
-                  icon: Icons.location_on,
-                  title: "Local Stocks",
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 15,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: AssetsButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return const EmtiaBottomSheet();
-                      },
-                    );
-                  },
-                  icon: Icons.oil_barrel,
-                  title: "Emtia",
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 15,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: AssetsButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return const RealEstateBottomSheet();
-                      },
-                    );
-                  },
-                  icon: Icons.home,
-                  title: "Real Estate",
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: const MainScreenBottomNavigation(),
     );
   }
 }

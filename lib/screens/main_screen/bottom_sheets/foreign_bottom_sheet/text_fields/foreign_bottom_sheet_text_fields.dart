@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
 
 class ForeignBuyQuantityTextFormField extends StatelessWidget {
-  const ForeignBuyQuantityTextFormField({super.key});
+  final TextEditingController controller;
+  const ForeignBuyQuantityTextFormField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController foreignBuyQuantityController = TextEditingController();
-
     return TextFormField(
-      controller: foreignBuyQuantityController,
+      controller: controller,
       keyboardType: TextInputType.number,
       style: const TextStyle(fontSize: 13, color: Colors.white),
       decoration: InputDecoration(
@@ -32,13 +31,13 @@ class ForeignBuyQuantityTextFormField extends StatelessWidget {
 }
 
 class ForeignBuyQuantityPriceTextFormField extends StatelessWidget {
-  const ForeignBuyQuantityPriceTextFormField({super.key});
+  final TextEditingController controller;
+  const ForeignBuyQuantityPriceTextFormField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController foreignBuyQuantityPriceController = TextEditingController();
     return TextFormField(
-      controller: foreignBuyQuantityPriceController,
+      controller: controller,
       keyboardType: TextInputType.number,
       style: const TextStyle(fontSize: 13, color: Colors.white),
       decoration: InputDecoration(
@@ -61,14 +60,13 @@ class ForeignBuyQuantityPriceTextFormField extends StatelessWidget {
 }
 
 class ForeignSellQuantityTextFormField extends StatelessWidget {
-  const ForeignSellQuantityTextFormField({super.key});
+  final TextEditingController controller;
+  const ForeignSellQuantityTextFormField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController foreignSellQuantityController = TextEditingController();
-
     return TextFormField(
-      controller: foreignSellQuantityController,
+      controller: controller,
       keyboardType: TextInputType.number,
       style: const TextStyle(fontSize: 13, color: Colors.white),
       decoration: InputDecoration(
@@ -91,13 +89,13 @@ class ForeignSellQuantityTextFormField extends StatelessWidget {
 }
 
 class ForeignSellQuantityPriceTextFormField extends StatelessWidget {
-  const ForeignSellQuantityPriceTextFormField({super.key});
+  final TextEditingController controller;
+  const ForeignSellQuantityPriceTextFormField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController foreignSellQuantityPriceController = TextEditingController();
     return TextFormField(
-      controller: foreignSellQuantityPriceController,
+      controller: controller,
       keyboardType: TextInputType.number,
       style: const TextStyle(fontSize: 13, color: Colors.white),
       decoration: InputDecoration(
@@ -118,3 +116,5 @@ class ForeignSellQuantityPriceTextFormField extends StatelessWidget {
     );
   }
 }
+
+

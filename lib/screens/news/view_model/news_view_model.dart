@@ -12,7 +12,7 @@ abstract class _NewsModelViewBase with Store {
   @observable
   List<NewsModel> news = [];
 
-  final url = "https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=demo";
+  final url = "https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=6TXCUCZLP7O5FZDS";
 
   @observable
   bool isServiceLoading = false;

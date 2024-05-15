@@ -20,7 +20,7 @@ class LoginOrWithSection extends StatelessWidget {
           child: Center(
             child: Text(
               "Or Login with",
-              style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 22),
+              style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 15),
             ),
           ),
         ),
@@ -43,7 +43,7 @@ class LoginDontHaveAnAccountText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "Don't have an account?",
-      style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 25),
+      style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 20),
     );
   }
 }

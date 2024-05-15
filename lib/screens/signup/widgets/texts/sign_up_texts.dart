@@ -8,7 +8,7 @@ class SignUpAlreadyAccountText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Already have an account?", style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 25));
+    return Text("Already have an account?", style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 20));
   }
 }
 
@@ -33,7 +33,7 @@ class SignUpOrWithLine extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Text(
                 "Or Sign up with",
-                style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 20),
+                style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 13),
               ),
             ),
           ),
@@ -71,8 +71,8 @@ class SignUpTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "Create Your Account",
-      style: TextStyle(fontSize: 40, color: VarlikYonetimiColors().goldColors),
+      textAlign: TextAlign.left,
+      style: TextStyle(fontSize: 30, color: VarlikYonetimiColors().goldColors),
     );
   }
 }
-

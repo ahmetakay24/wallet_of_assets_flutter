@@ -63,7 +63,7 @@ class LoginScreenSignUpButton extends StatelessWidget {
             Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const SignUpScreen())),
         child: const Text(
           "Sign Up",
-          style: TextStyle(color: Colors.white, fontSize: 25),
+          style: TextStyle(color: Colors.white, fontSize: 20),
         ));
   }
 }
@@ -78,7 +78,8 @@ class LoginWithGoogleButton extends StatelessWidget {
     return Expanded(
         child: ElevatedButton(
       onPressed: () => LoginAuthService().signInWithGoogle().then((value) => Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const MainScreenManagement(), settings: RouteSettings(arguments: value)))),
+          MaterialPageRoute(
+              builder: (context) => const MainScreenManagement(), settings: RouteSettings(arguments: value)))),
       style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
       child: const Padding(
         padding: EdgeInsets.all(15.0),
@@ -98,7 +99,7 @@ class LoginForgotPasswordButton extends StatelessWidget {
           context, PageTransition(type: PageTransitionType.rightToLeft, child: const ForgotPasswordScreen())),
       child: Text(
         "Forgot password?",
-        style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 25),
+        style: TextStyle(color: VarlikYonetimiColors().goldColors, fontSize: 20),
       ),
     );
   }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
 
 class TotalAssetsSection extends StatelessWidget {
-  const TotalAssetsSection({
-    super.key,
-  });
+  const TotalAssetsSection({super.key, required this.assets});
+
+  final double assets;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class TotalAssetsSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "\$75,242,12",
+                  "\$$assets",
                   style: TextStyle(fontSize: 35, color: VarlikYonetimiColors().blueColor, fontFamily: "Lato"),
                 ),
                 Padding(
