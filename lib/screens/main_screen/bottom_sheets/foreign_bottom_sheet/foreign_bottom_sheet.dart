@@ -32,27 +32,51 @@ class _ForeignBottomSheetState extends State<ForeignBottomSheet> {
   double foreignSellQuantityPrice = 0;
 
   void updateForeignBuyQuantity() {
-    setState(() {
-      foreignBuyQuantity = int.parse(foreignBuyQuantityTextFormField.text);
-    });
+    if (foreignBuyQuantityTextFormField.text.isNotEmpty) {
+      setState(() {
+        foreignBuyQuantity = int.parse(foreignBuyQuantityTextFormField.text);
+      });
+    } else {
+      setState(() {
+        foreignBuyQuantity = 0;
+      });
+    }
   }
 
   void updateForeignBuyQuantityPrice() {
-    setState(() {
-      foreignBuyQuantityPrice = double.parse(foreignBuyQuantityPriceTextFormField.text);
-    });
+    if (foreignBuyQuantityPriceTextFormField.text.isNotEmpty) {
+      setState(() {
+        foreignBuyQuantityPrice = double.parse(foreignBuyQuantityPriceTextFormField.text);
+      });
+    } else {
+      setState(() {
+        foreignBuyQuantityPrice = 0.0;
+      });
+    }
   }
 
   void updateForeignSellQuantity() {
-    setState(() {
-      foreignSellQuantity = int.parse(foreignSellQuantityTextFormField.text);
-    });
+    if (foreignSellQuantityTextFormField.text.isNotEmpty) {
+      setState(() {
+        foreignSellQuantity = int.parse(foreignSellQuantityTextFormField.text);
+      });
+    } else {
+      setState(() {
+        foreignSellQuantity = 0;
+      });
+    }
   }
 
   void updateForeignSellQuantityPrice() {
-    setState(() {
-      foreignSellQuantityPrice = double.parse(foreignSellQuantityPriceTextFormField.text);
-    });
+    if (foreignSellQuantityPriceTextFormField.text.isNotEmpty) {
+      setState(() {
+        foreignSellQuantityPrice = double.parse(foreignSellQuantityPriceTextFormField.text);
+      });
+    } else {
+      setState(() {
+        foreignSellQuantityPrice = 0.0;
+      });
+    }
   }
 
   @override

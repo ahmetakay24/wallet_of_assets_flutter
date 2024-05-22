@@ -66,6 +66,9 @@ if (flutterVersionName == null) {
        }
    }
    buildTypes {
+    release {
+           signingConfig signingConfigs.release
+       }
        debug {
         minifyEnabled true
 
@@ -80,4 +83,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
+}

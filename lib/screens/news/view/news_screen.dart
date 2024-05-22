@@ -5,9 +5,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:varlik_yonetimi/core/core_methods.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
-import 'package:varlik_yonetimi/main.dart';
 import 'package:varlik_yonetimi/screens/news/view_model/news_view_model.dart';
 
+//Haber sayfasının ui kısmındaki widgetlar burada yönetiliyor
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
 

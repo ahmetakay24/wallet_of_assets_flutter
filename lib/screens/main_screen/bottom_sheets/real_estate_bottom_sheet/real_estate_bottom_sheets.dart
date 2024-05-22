@@ -32,27 +32,51 @@ class _RealEstateBottomSheetState extends State<RealEstateBottomSheet> {
   double realEstateSellQuantityPrice = 0;
 
   void updaterealEstateBuyQuantity() {
-    setState(() {
-      realEstateBuyQuantity = int.parse(realEstateBuyQuantityTextFormField.text);
-    });
+    if (realEstateBuyQuantityTextFormField.text.isNotEmpty) {
+      setState(() {
+        realEstateBuyQuantity = int.parse(realEstateBuyQuantityTextFormField.text);
+      });
+    } else {
+      setState(() {
+        realEstateBuyQuantity = 0;
+      });
+    }
   }
 
   void updaterealEstateBuyQuantityPrice() {
-    setState(() {
-      realEstateBuyQuantityPrice = double.parse(realEstateBuyQuantityPriceTextFormField.text);
-    });
+    if (realEstateBuyQuantityPriceTextFormField.text.isNotEmpty) {
+      setState(() {
+        realEstateBuyQuantityPrice = double.parse(realEstateBuyQuantityPriceTextFormField.text);
+      });
+    } else {
+      setState(() {
+        realEstateBuyQuantityPrice = 0.0;
+      });
+    }
   }
 
   void updaterealEstateSellQuantity() {
-    setState(() {
-      realEstateSellQuantity = int.parse(realEstateSellQuantityTextFormField.text);
-    });
+    if (realEstateSellQuantityTextFormField.text.isNotEmpty) {
+      setState(() {
+        realEstateSellQuantity = int.parse(realEstateSellQuantityTextFormField.text);
+      });
+    } else {
+      setState(() {
+        realEstateSellQuantity = 0;
+      });
+    }
   }
 
   void updaterealEstateSellQuantityPrice() {
-    setState(() {
-      realEstateSellQuantityPrice = double.parse(realEstateSellQuantityPriceTextFormField.text);
-    });
+    if (realEstateSellQuantityPriceTextFormField.text.isNotEmpty) {
+      setState(() {
+        realEstateSellQuantityPrice = double.parse(realEstateSellQuantityPriceTextFormField.text);
+      });
+    } else {
+      setState(() {
+        realEstateSellQuantityPrice = 0.0;
+      });
+    }
   }
 
   @override

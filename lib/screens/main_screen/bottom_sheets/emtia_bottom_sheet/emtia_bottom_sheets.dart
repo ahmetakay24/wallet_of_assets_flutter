@@ -45,52 +45,100 @@ class _EmtiaBottomSheetState extends State<EmtiaBottomSheet> {
     double oilSellQuantityPrice = 0;
 
     void updateGoldBuyQuantity() {
-      setState(() {
-        goldBuyQuantity = int.parse(goldBuyQuantityTextFormField.text);
-      });
-    }
+  if (goldBuyQuantityTextFormField.text.isNotEmpty) {
+    setState(() {
+      goldBuyQuantity = int.parse(goldBuyQuantityTextFormField.text);
+    });
+  } else {
+    setState(() {
+      goldBuyQuantity = 0;
+    });
+  }
+}
 
-    void updateGoldBuyQuantityPrice() {
-      setState(() {
-        goldBuyQuantityPrice = double.parse(goldBuyQuantityPriceTextFormField.text);
-      });
-    }
+void updateGoldBuyQuantityPrice() {
+  if (goldBuyQuantityPriceTextFormField.text.isNotEmpty) {
+    setState(() {
+      goldBuyQuantityPrice = double.parse(goldBuyQuantityPriceTextFormField.text);
+    });
+  } else {
+    setState(() {
+      goldBuyQuantityPrice = 0.0;
+    });
+  }
+}
 
-    void updateGoldSellQuantity() {
-      setState(() {
-        goldSellQuantity = int.parse(goldSellQuantityTextFormField.text);
-      });
-    }
+void updateGoldSellQuantity() {
+  if (goldSellQuantityTextFormField.text.isNotEmpty) {
+    setState(() {
+      goldSellQuantity = int.parse(goldSellQuantityTextFormField.text);
+    });
+  } else {
+    setState(() {
+      goldSellQuantity = 0;
+    });
+  }
+}
 
-    void updateGoldSellQuantityPrice() {
-      setState(() {
-        goldSellQuantityPrice = double.parse(goldSellQuantityPriceTextFormField.text);
-      });
-    }
+void updateGoldSellQuantityPrice() {
+  if (goldSellQuantityPriceTextFormField.text.isNotEmpty) {
+    setState(() {
+      goldSellQuantityPrice = double.parse(goldSellQuantityPriceTextFormField.text);
+    });
+  } else {
+    setState(() {
+      goldSellQuantityPrice = 0.0;
+    });
+  }
+}
 
-    void updateOilBuyQuantity() {
-      setState(() {
-        oilBuyQuantity = int.parse(oilBuyQuantityTextFormField.text);
-      });
-    }
+void updateOilBuyQuantity() {
+  if (oilBuyQuantityTextFormField.text.isNotEmpty) {
+    setState(() {
+      oilBuyQuantity = int.parse(oilBuyQuantityTextFormField.text);
+    });
+  } else {
+    setState(() {
+      oilBuyQuantity = 0;
+    });
+  }
+}
 
-    void updateOilBuyQuantityPrice() {
-      setState(() {
-        oilBuyQuantityPrice = double.parse(oilBuyQuantityPriceTextFormField.text);
-      });
-    }
+void updateOilBuyQuantityPrice() {
+  if (oilBuyQuantityPriceTextFormField.text.isNotEmpty) {
+    setState(() {
+      oilBuyQuantityPrice = double.parse(oilBuyQuantityPriceTextFormField.text);
+    });
+  } else {
+    setState(() {
+      oilBuyQuantityPrice = 0.0;
+    });
+  }
+}
 
-    void updateOilSellQuantity() {
-      setState(() {
-        oilSellQuantity = int.parse(oilSellQuantityTextFormField.text);
-      });
-    }
+void updateOilSellQuantity() {
+  if (oilSellQuantityTextFormField.text.isNotEmpty) {
+    setState(() {
+      oilSellQuantity = int.parse(oilSellQuantityTextFormField.text);
+    });
+  } else {
+    setState(() {
+      oilSellQuantity = 0;
+    });
+  }
+}
 
-    void updateOilSellQuantityPrice() {
-      setState(() {
-        oilSellQuantityPrice = double.parse(oilSellQuantityPriceTextFormField.text);
-      });
-    }
+void updateOilSellQuantityPrice() {
+  if (oilSellQuantityPriceTextFormField.text.isNotEmpty) {
+    setState(() {
+      oilSellQuantityPrice = double.parse(oilSellQuantityPriceTextFormField.text);
+    });
+  } else {
+    setState(() {
+      oilSellQuantityPrice = 0.0;
+    });
+  }
+}
 
     return Scaffold(
       backgroundColor: VarlikYonetimiColors().goldColors,

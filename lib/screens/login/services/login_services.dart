@@ -41,3 +41,30 @@ class LoginAuthService {
     return userCredential.user;
   }
 }
+
+/*Future<void> signInWithGoogle(BuildContext context) async {
+    final gUser = await GoogleSignIn().signIn();
+    final gAuth = await gUser!.authentication;
+    final credential = GoogleAuthProvider.credential(accessToken: gAuth.accessToken, idToken: gAuth.idToken);
+    final UserCredential userGoogleCredential = await _firebaseAuth.signInWithCredential(credential);
+    final navigator = Navigator.of(context);
+    try {
+      final UserCredential userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+          email: userGoogleCredential.user!.email.toString(),
+          password: userGoogleCredential.user!.displayName.toString());
+      if (userCredential.user != null) {
+        Fluttertoast.showToast(msg: "Login successful");
+        navigator.push(MaterialPageRoute(
+          builder: (context) => const MainScreenManagement(),
+        ));
+      }
+    } catch (e) {
+      SignUpAuthService().registerUser(
+          userUID: userGoogleCredential.user!.uid,
+          name: userGoogleCredential.user!.displayName.toString(),
+          surname: userGoogleCredential.user!.displayName.toString(),
+          email: userGoogleCredential.user!.email.toString(),
+          password: userGoogleCredential.user!.displayName.toString());
+      signInWithGoogle(context);
+    }
+  } */

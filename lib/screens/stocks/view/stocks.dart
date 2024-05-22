@@ -1,9 +1,8 @@
-import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
 import 'package:varlik_yonetimi/screens/stocks/view_model.dart/stocks_model_view.dart';
+
 
 class Stocks extends StatefulWidget {
   const Stocks({super.key});
@@ -38,6 +37,7 @@ class _StocksState extends State<Stocks> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
+        //her hisse bloğunu burada yönetip ui verileri aktarıyoruz
         child: Observer(builder: (_) {
           return ListView.builder(
             itemCount: stocksModelView.stocksData.length,
@@ -50,10 +50,18 @@ class _StocksState extends State<Stocks> {
                   decoration:
                       BoxDecoration(color: VarlikYonetimiColors().goldColors, borderRadius: BorderRadius.circular(12)),
                   child: ListTile(
-                    leading: Text(stocksModelView.stocksData[index][0].toString()),
-                    title: Text(stocksModelView.stocksData[index][1].toString()),
-                    subtitle: Text(stocksModelView.stocksData[index][2].toString()),
-                    trailing: Text(stocksModelView.stocksData[index][3].toString()),
+                    leading: Text(
+                      stocksModelView.stocksData[index][0].toString(),
+                      style: TextStyle(color: VarlikYonetimiColors().blueColor),
+                    ),
+                    title: Text(stocksModelView.stocksData[index][1].toString(),
+                        style: TextStyle(color: VarlikYonetimiColors().blueColor)),
+                    subtitle: Text(stocksModelView.stocksData[index][2].toString(),
+                        style: TextStyle(color: VarlikYonetimiColors().blueColor)),
+                    trailing: Text(
+                      stocksModelView.stocksData[index][3].toString(),
+                      style: TextStyle(color: VarlikYonetimiColors().blueColor, fontSize: 15),
+                    ),
                   ),
                 ),
               );

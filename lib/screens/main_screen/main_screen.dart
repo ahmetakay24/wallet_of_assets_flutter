@@ -20,6 +20,7 @@ class MainScreenManagement extends StatefulWidget {
 
 class _MainScreenManagementState extends State<MainScreenManagement> {
   final user = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -59,6 +60,7 @@ class _MainScreenManagementState extends State<MainScreenManagement> {
                       flex: 35,
                       child: TotalAssetsSection(
                         assets: assets,
+                        fun: updateAssets,
                       )),
                   const Expanded(
                     flex: 8,

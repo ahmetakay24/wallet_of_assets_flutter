@@ -79,6 +79,7 @@ dependencies:
   #data
   csv: ^6.0.0
   freezed: ^2.5.2
+  intl: ^0.19.0
 
 
 #Splash Screen Settings

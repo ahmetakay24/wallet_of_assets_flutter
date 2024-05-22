@@ -7,7 +7,6 @@ import 'package:varlik_yonetimi/screens/news/model/news_model.dart';
 part 'news_view_model.g.dart';
 
 class NewsModelView = _NewsModelViewBase with _$NewsModelView;
-
 abstract class _NewsModelViewBase with Store {
   @observable
   List<NewsModel> news = [];

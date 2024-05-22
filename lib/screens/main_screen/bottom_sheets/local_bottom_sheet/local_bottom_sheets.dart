@@ -32,27 +32,51 @@ class _LocalBottomSheetState extends State<LocalBottomSheet> {
   double localSellQuantityPrice = 0;
 
   void updatelocalBuyQuantity() {
-    setState(() {
-      localBuyQuantity = int.parse(localBuyQuantityTextFormField.text);
-    });
+    if (localBuyQuantityTextFormField.text.isNotEmpty) {
+      setState(() {
+        localBuyQuantity = int.parse(localBuyQuantityTextFormField.text);
+      });
+    } else {
+      setState(() {
+        localBuyQuantity = 0;
+      });
+    }
   }
 
   void updatelocalBuyQuantityPrice() {
-    setState(() {
-      localBuyQuantityPrice = double.parse(localBuyQuantityPriceTextFormField.text);
-    });
+    if (localBuyQuantityPriceTextFormField.text.isNotEmpty) {
+      setState(() {
+        localBuyQuantityPrice = double.parse(localBuyQuantityPriceTextFormField.text);
+      });
+    } else {
+      setState(() {
+        localBuyQuantityPrice = 0.0;
+      });
+    }
   }
 
   void updatelocalSellQuantity() {
-    setState(() {
-      localSellQuantity = int.parse(localSellQuantityTextFormField.text);
-    });
+    if (localSellQuantityTextFormField.text.isNotEmpty) {
+      setState(() {
+        localSellQuantity = int.parse(localSellQuantityTextFormField.text);
+      });
+    } else {
+      setState(() {
+        localSellQuantity = 0;
+      });
+    }
   }
 
   void updatelocalSellQuantityPrice() {
-    setState(() {
-      localSellQuantityPrice = double.parse(localSellQuantityPriceTextFormField.text);
-    });
+    if (localSellQuantityPriceTextFormField.text.isNotEmpty) {
+      setState(() {
+        localSellQuantityPrice = double.parse(localSellQuantityPriceTextFormField.text);
+      });
+    } else {
+      setState(() {
+        localSellQuantityPrice = 0.0;
+      });
+    }
   }
 
   @override

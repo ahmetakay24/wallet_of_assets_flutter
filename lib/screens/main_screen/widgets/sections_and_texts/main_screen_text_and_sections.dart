@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:varlik_yonetimi/core/core_utiliys.dart';
+import 'package:intl/intl.dart';
 
 class TotalAssetsSection extends StatelessWidget {
-  const TotalAssetsSection({super.key, required this.assets});
+  const TotalAssetsSection({super.key, required this.assets, required this.fun});
 
   final double assets;
+  final VoidCallback fun;
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat.yMd().format(now);
+
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.3,
@@ -39,8 +44,9 @@ class TotalAssetsSection extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 12),
                   child: InkWell(
+                    onTap: fun,
                     child: Icon(
-                      Icons.remove_red_eye,
+                      Icons.refresh,
                       color: VarlikYonetimiColors().blueColor,
                     ),
                   ),
@@ -53,20 +59,12 @@ class TotalAssetsSection extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "+\$2,340.8 (%3,13)",
-                  style: TextStyle(fontSize: 15, color: VarlikYonetimiColors().blueColor, fontFamily: "Lato"),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: InkWell(
-                      child: Text(
-                    "Today",
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: VarlikYonetimiColors().blueColor,
-                    ),
-                  )),
+                  child: Text(
+                    formattedDate,
+                    style: TextStyle(fontSize: 17, color: VarlikYonetimiColors().blueColor, fontFamily: "Lato"),
+                  ),
                 )
               ],
             ),
